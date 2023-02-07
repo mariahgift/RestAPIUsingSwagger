@@ -53,14 +53,14 @@ public class StudentService implements StudentServiceInterface{
     }
 
 
-    public Student enroll(int courseId, Course course) {
-        Student student=studentRepository.findById(courseId).get();
+    public Student enroll(int studentId, Course course) {
+        Student student=studentRepository.findById(studentId).get();
         student.getCourses().add(courseRepository.findById(course.getCourseId()).get());
         studentRepository.save(student);
         return student;
     }
-    public Student drop(int courseId, Course course) {
-        Student student=studentRepository.findById(courseId).get();
+    public Student drop(int studentId, Course course) {
+        Student student=studentRepository.findById(studentId).get();
         student.getCourses().remove(courseRepository.findById(course.getCourseId()).get());
         studentRepository.save(student);
         return student;

@@ -44,13 +44,13 @@ public class StudentController {
     }
 
 
-    @PutMapping("/enroll/{courseId}")
-    public Student enroll(@PathVariable("courseId") int courseId, @RequestBody Course course) {
-        return studentService.enroll(courseId, course);
+    @PutMapping("/enroll/{studentId}")
+    public Student enroll(@PathVariable("studentId") int studentId, @RequestBody Course course) {
+        return studentService.enroll(studentId, course);
     }
-    @DeleteMapping("/drop/{courseId}")
-    public Student drop(@PathVariable("courseId") int courseId, @RequestBody Course course) {
-        studentService.drop(courseId, course);
-        return studentService.drop(courseId,course);
+    @DeleteMapping("/drop/{studentId}")
+    public Student drop(@PathVariable("studentId") int studentId, @RequestBody Course course) {
+        studentService.drop(studentId, course);
+        return studentService.drop(studentId,course);
     }
 }

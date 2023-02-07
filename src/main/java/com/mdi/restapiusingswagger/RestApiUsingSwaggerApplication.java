@@ -9,5 +9,4 @@ public class RestApiUsingSwaggerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(RestApiUsingSwaggerApplication.class, args);
 	}
-
 }
