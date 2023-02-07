@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "student_info")
@@ -22,14 +23,14 @@ public class Student {
     @JoinTable(name = "student_course",
             joinColumns = @JoinColumn(name = "studentId"),
             inverseJoinColumns = @JoinColumn(name = "courseId"))
-    private List<Course> courses;
+    private Set<Course> courses;
 
 
     public int getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(Integer studentId) {
+    public void setStudentId(int studentId) {
         this.studentId = studentId;
     }
 
@@ -73,4 +74,11 @@ public class Student {
         this.level = level;
     }
 
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
+    }
 }

@@ -13,14 +13,14 @@ public class Course {
     private String courseName;
     private String courseDescription;
 
-    @ManyToMany(mappedBy = "courses")
-    private List<Student> students;
+//    @ManyToMany(mappedBy = "courses")
+//    private List<Student> students;
 
-    public Integer getCourseId() {
+    public int getCourseId() {
         return courseId;
     }
 
-    public void setCourseId(Integer courseId) {
+    public void setCourseId(int courseId) {
         this.courseId = courseId;
     }
 

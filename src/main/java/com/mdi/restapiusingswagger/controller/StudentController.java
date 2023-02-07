@@ -1,6 +1,8 @@
 package com.mdi.restapiusingswagger.controller;
 
+import com.mdi.restapiusingswagger.entity.Course;
 import com.mdi.restapiusingswagger.entity.Student;
+import com.mdi.restapiusingswagger.service.course.CourseService;
 import com.mdi.restapiusingswagger.service.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,7 @@ import java.util.Optional;
 public class StudentController {
     @Autowired
     private StudentService studentService;
+
 
     @PostMapping(path = "/addStudent")
     public Student addStudent(@RequestBody Student student) {
@@ -41,4 +44,13 @@ public class StudentController {
     }
 
 
+    @PutMapping("/enroll/{courseId}")
+    public Student enroll(@PathVariable("courseId") int courseId, @RequestBody Course course) {
+        return studentService.enroll(courseId, course);
+    }
+    @DeleteMapping("/drop/{courseId}")
+    public Student drop(@PathVariable("courseId") int courseId, @RequestBody Course course) {
+        studentService.drop(courseId, course);
+        return studentService.drop(courseId,course);
+    }
 }

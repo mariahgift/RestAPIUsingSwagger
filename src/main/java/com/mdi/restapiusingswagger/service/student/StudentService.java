@@ -1,8 +1,11 @@
 package com.mdi.restapiusingswagger.service.student;
 
+import com.mdi.restapiusingswagger.entity.Course;
 import com.mdi.restapiusingswagger.entity.Student;
+import com.mdi.restapiusingswagger.repository.CourseRepository;
 import com.mdi.restapiusingswagger.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +16,9 @@ public class StudentService implements StudentServiceInterface{
 
     @Autowired
     private StudentRepository studentRepository;
+
+    @Autowired
+    private CourseRepository courseRepository;
 
     @Override
     public List<Student> getAllStudents() {
@@ -46,5 +52,18 @@ public class StudentService implements StudentServiceInterface{
         studentRepository.deleteById(studentId);
     }
 
+
+    public Student enroll(int courseId, Course course) {
+        Student student=studentRepository.findById(courseId).get();
+        student.getCourses().add(courseRepository.findById(course.getCourseId()).get());
+        studentRepository.save(student);
+        return student;
+    }
+    public Student drop(int courseId, Course course) {
+        Student student=studentRepository.findById(courseId).get();
+        student.getCourses().remove(courseRepository.findById(course.getCourseId()).get());
+        studentRepository.save(student);
+        return student;
+    }
 
 }
